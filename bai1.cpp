@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 //ham kiem tra do uu tien cua thuat toan
@@ -100,7 +101,7 @@ bool evaluatePostfix(const vector<string> &postfix, const unordered_map<char, bo
 
 
 int main() {
-    string expression;
+	string expression;
     cout << "Nhap bieu thuc logic (dung !, &, |, > và các bien nhu A, B, C): ";
     getline(cin, expression);
 
@@ -108,12 +109,14 @@ int main() {
     if (!isValidExpression(expression)) {
         cout << "bieu thuc khong hop le." << endl;
         return 1;
-    }
+    } else {
+    	cout<<"Bieu thuc hop le!"<<endl;
+	} 
 
     // Chuyyen doi bieu thuc tu Infix sang Postfix
     vector<string> postfix = infixToPostfix(expression);
 
-    // T́m các tim cac bien logic
+    // Tìm các tim cac bien logic
     unordered_map<char, bool> variables;
     for (char c : expression) {
         if (isalnum(c)) variables[c] = false;
@@ -127,9 +130,6 @@ int main() {
     // danh gia bieu thuc
     bool result = evaluatePostfix(postfix, variables);
 
-    // In 
-    if (result) cout<<"Bieu thuc hop le!"; else cout<<"Bieu thucc khong hop le!";
-    cout<<endl;
     // GIa tri cua bieu thuc dau vao;
     cout << "Gia tri cua bieu thuc la: " << (result ? "true" : "false") << endl;
 
